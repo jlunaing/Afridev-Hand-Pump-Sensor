@@ -12,6 +12,8 @@
  *         https://github.com/stm32duino/VL53L4CX 
  *      3. Adafruit MLX90614 IR sensor:
  *         https://github.com/adafruit/Adafruit-MLX90614-Library
+ *      4. Arduino PrintStream library:
+ *         https://github.com/spluttflob/Arduino-PrintStream.git
  * 
  *  @author Juan Luna
  *  @date   2023-Jun-19
@@ -27,3 +29,4 @@
 #include <string.h> // Library for string manipulation functions
 #include <Adafruit_MLX90614.h> // Adafruit MLX90614 temperature sensor
 #include <vl53l4cd_class.h> // VL53L4CD distance sensor
+#include "PrintStream.h" // From 

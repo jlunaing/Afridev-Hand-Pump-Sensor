@@ -32,22 +32,34 @@
 #define ADC_ADJUST 4095
 
 // MEASUREMENT RANGES
+// Distance threshold in millimeters
 #define DIST_THRESHOLD 5
+// Temperature threshold in degrees Celsius
 #define TEMP_THRESHOLD 2
 
-#define MAX_WATER_TEMP 50 // celcius, translates to 122 deg farenheit
+// Maximum water temperature in Celsius
+#define MAX_WATER_TEMP 50 // equivalent to 122-F
+// Minimum water temperature in Celsius
 #define MIN_WATER_TEMP 0  // freezing point
+// Maximum distance in millimeters
 #define MAX_DIST 450
+// Minimum distance in millimeters
 #define MIN_DIST 50
 
-#define PUMP_CROSSSECTIONAL_AREA_MM 1963.5
-#define MM_TO_L_CONVERT 1000000
+// Cross-sectional area of pump in square millimeters
+#define PUMP_AREA 1963.5
+// Conversion factor from cubic millimeters to liters
+#define MMC_TO_L 1000000
 
+// Active state
 #define ACTIVE 1
+// Inactive state
 #define INACTIVE 0
 
-// Components.
+// SENSOR OBJECTS
+// VL53L4CD distance sensor using I2C and XSHUT pin
 VL53L4CD sensor_vl53l4cd_sat(&Wire, PIN_XSHUT);
+// MLX90614 temperature sensor
 Adafruit_MLX90614 mlx = Adafruit_MLX90614();
 
 volatile int interruptCount = 0;
@@ -98,24 +110,23 @@ void setup() {
     pinMode(PIN_IRQ, INPUT_PULLUP);
     attachInterrupt(PIN_IRQ, measure, FALLING);
 
-    // Initialize serial for output.
+    // Initialize serial for output
     Serial.begin(BAUD);
-    Serial.println("Starting...");
+    Serial << "Starting..." << endl;
 
     // Initialize I2C bus.
     Wire.begin(PIN_SDA, PIN_SCL);
 
-    // initialize the sensor
+    // Initialize IR sensor
     if (!mlx.begin(MLX90614_I2CADDR, &Wire)) {
-        Serial.println("Error connecting to MLX sensor. Check wiring.");
+        Serial << "Error connecting to IR sensor. Check wiring." << endl;
         ESP.restart();
     };
 
-    Serial.print("Emissivity = ");
-    Serial.println(mlx.readEmissivity());
-    Serial.println("================================================");
+    Serial << "Emissivity = " << mlx.readEmissivity() << endl;
+    Serial << "================================================";
 
-    // Init ADC
+    // Initialize ADC
     Wire.beginTransmission(MCP_ADDR);
     // Send configuration command
     // Continuous conversion mode, 12-bit resolution
@@ -125,10 +136,8 @@ void setup() {
 
     // Configure VL53L4CD satellite component.
     sensor_vl53l4cd_sat.begin();
-
     // Switch off VL53L4CD satellite component.
     sensor_vl53l4cd_sat.VL53L4CD_Off();
-
     // Initialize VL53L4CD satellite component.
     sensor_vl53l4cd_sat.InitSensor();
 
@@ -139,40 +148,39 @@ void setup() {
     // Start Measurements
     sensor_vl53l4cd_sat.VL53L4CD_StartRanging();
 
-    Serial.println("Begin ok!");
+    Serial << "Successfully started." << endl;
 }
 
-float getVolume_L(int pumpDist, int active){
-    if(active && ((prevDist - pumpDist) > DIST_THRESHOLD)){
-        return ((prevDist-pumpDist) * PUMP_CROSSSECTIONAL_AREA_MM)/MM_TO_L_CONVERT;
+float getVolume_L(int pumpDist, int active) {
+    if (active && ((prevDist - pumpDist) > DIST_THRESHOLD)) {
+        return ((prevDist-pumpDist) * PUMP_AREA)/MMC_TO_L;
     }
-    else{
+    else {
         return 0;
     }
-
 }
 
-int sanityCheck(int dist, int ambTemp, int objTemp){
+int statusCheck (int dist, int ambTemp, int objTemp) {
     int deltaDist = dist - prevDist;
     int deltaTemp = objTemp - ambTemp;
 
-    if((objTemp > MAX_WATER_TEMP) || (objTemp < MIN_WATER_TEMP)){
+    if ((objTemp > MAX_WATER_TEMP) || (objTemp < MIN_WATER_TEMP)) {
         // temperature out of normal range
         return INACTIVE;
     }
 
-    if((abs(deltaDist) > DIST_THRESHOLD) && (abs(deltaTemp) > TEMP_THRESHOLD)){
+    if ((abs(deltaDist) > DIST_THRESHOLD) && (abs(deltaTemp) > TEMP_THRESHOLD)) {
         return ACTIVE;
     }
 
     return INACTIVE;
 }
 
-/* **************USED FOR REALTERM OR PUTTY - NOT PLATFORMIO SERIAL MONITOR ************/
-/*                          MATCHING BAUD & ANSI-VT100                  */
+// The following lines of code are used RealTerm or PuTTY, 
+// not PlatformIO serial monitor
 
-// clear the contents of terminal screen
-void clearTerminal(void){
+// Clear the contents of terminal screen
+void clearTerminal(void) {
     Serial.write(27);
     Serial.print("[2J");
     Serial.write(27);
@@ -180,19 +188,19 @@ void clearTerminal(void){
 }
 
 // Sets the position of the cursor to the beginnig of the line
-void newLine(void){
+void newLine(void) {
     Serial.write(27);
     Serial.print("[70D");
 }
 
-// print the information to external terminal
-void printInformation(int dist, int adcVol, int ambientTemp, int objectTemp, int active){
+// Print the information to external terminal
+void printInformation(int dist, int adcVol, int ambientTemp, int objectTemp, int active) {
 
-    // clear the terminal screen
+    // Clear the terminal screen
     clearTerminal();
     
-    // print the information
-    Serial.printf("*************** WORKING WELL ***************\n");
+    // Print the information
+    Serial.printf(" MONITORING SYSTEM DEMO \n");
     newLine();
     Serial.printf("Current Distance: %d mm\n", dist);
     newLine();
@@ -200,21 +208,20 @@ void printInformation(int dist, int adcVol, int ambientTemp, int objectTemp, int
     newLine();
     Serial.printf("Total Volume Pumped: %f L \n\n", totalVolume_L);
     newLine();
-    Serial.printf("*************** PUMP STATUS **************** \n\n");
+    Serial.printf(" PUMP STATUS \n\n");
 
     newLine();
     Serial.printf("\t\t");
-    if(active){
+    if (active) {
         Serial.println("ACTIVE");
     }
-    else{
+    else {
         Serial.println("INACTIVE");
     }
     Serial.printf("\n");
     newLine();
     Serial.printf("******************************************* ");
 }
-/* ************************************************************************** */
 
 void loop() {
     uint8_t NewDataReady = 0;
@@ -234,19 +241,20 @@ void loop() {
             // Read measured distance. RangeStatus = 0 means valid data
             sensor_vl53l4cd_sat.VL53L4CD_GetResult(&results);
 
-            if((results.distance_mm > MIN_DIST) && (results.distance_mm < MAX_DIST)){
-            // distance measurement is within expected range
+            if((results.distance_mm > MIN_DIST) && (results.distance_mm < MAX_DIST)) {
+            // Distance measurement is within expected range
                 int adc = read_ext_adc();
                 double amb = mlx.readAmbientTempC();
                 double obj = mlx.readObjectTempC();
 
-                active = sanityCheck(results.distance_mm, amb, obj);
+                active = statusCheck(results.distance_mm, amb, obj);
                 totalVolume_L += getVolume_L(results.distance_mm, active);
                 
                 //printInformation(results.distance_mm, adc, amb, obj, active);
 
                 prevDist = results.distance_mm;
-                Serial.printf("MEAS:%d,%d,%f,%f, %f,%d\n", results.distance_mm, adc, amb, obj, totalVolume_L, active);
+                Serial.printf("MEAS:%d,%d,%f,%f, %f,%d\n", results.distance_mm, 
+                                        adc, amb, obj, totalVolume_L, active);
             }
         }
     }
