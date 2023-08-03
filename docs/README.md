@@ -13,9 +13,7 @@
 
 For the initial decision and selection process, means of achieving each required function of the system were defined using a morphological chart (**Table 1**). This involved brainstorming ideas based on background research about technologies and known solutions.
 
-<p align="center"><b>Table 1.</b> Morphological chart for design development</p>
-
-<center>
+<p align="center"><b>Table 1.</b> Morphological chart for design development.<br><br>
 
 | Functions | <center>Means</center> |
 |  :----:   | ----- |
@@ -26,7 +24,7 @@ For the initial decision and selection process, means of achieving each required
 | Conserve battery life | - Solar panel<br> - Capacitor array |
 | Protect from external environment | - Epoxy resin enclosure<br>- Sensor box inserted inside pump<br>- Polycarbonate housing |
 
-</center>
+</p>
 
 The functions and means were gathered in [decision matrices](decision_matrices.md) to compare methods based on different criteria. From these matrices, we selected the optimal method for achieving each function and brainstormed ways to combine these components. The different key components of our design include the power management, processing, system enclosure, pump functionality sensing, and wireless communication.
 
@@ -46,25 +44,25 @@ To transmit data wirelessly, we determined satellite to be a feasible option in 
    alt="Figure 1"/>
 </p>
 
-<p><center><b>Figure 1.</b> Monitoring system installed on top of the Afridev hand pump.</center></p>
+<p align="center"><b>Figure 1.</b> Monitoring system installed on top of the Afridev hand pump.</p>
 
 <p align="center">
    <img src="https://github.com/jlunaing/Afridev-Hand-Pump-Sensor/blob/937f5e11812a0062556b8e444fde13d92a296132/docs/img/fig2.png" 
-   width=60%    
+   width=70%    
    alt="Figure 2"/>
 </p>
 
-<p><center><b>Figure 2.</b> Close-up view of monitoring system.</center></p>
+<p align="center"><b>Figure 2.</b> Close-up view of monitoring system.</p>
 
 A detailed solid of the polycarbonate enclosure can be found in the [hardware](hardware) folder, where version [v2](hardware/v2) corresponds to the latest design. The mechanical design of the housing features walls at $60\degree$ angles to dissuade removal of the sensor. The electrical system consists of batteries, a solar cell, charge controller, two sensors, a satellite modem, and a microcontroller. These components, as described in the following sections, are integrated into a PCB which is situated between the bottom and top housing. An exploded and collapsed view of the housing and the PCB is shown below (**Figure 3-4**). Detailed engineering drawings and the detailed electrical circuit schematic can be found in the [Drawings](hardware/v2/Drawings) and [PCB](pcb) folders. The software system that the design will use to process the data is described in the software development plan in the [Product Realization](#product-realization) section.
 
-<p align="center">
+<p align="middle">
    <img src="https://github.com/jlunaing/Afridev-Hand-Pump-Sensor/blob/937f5e11812a0062556b8e444fde13d92a296132/docs/img/fig3.png" 
-   width=60%    
+   width=50%    
    alt="Figure 3"/>
 </p>
 
-<p><center><b>Figure 3.</b> Exploded view of monitoring system. Colors shown for visual purposes.</center></p>
+<p align="center"><b>Figure 3.</b> Exploded view of monitoring system. Colors shown for visual purposes.</p>
 
 <p align="center">
    <img src="https://github.com/jlunaing/Afridev-Hand-Pump-Sensor/blob/937f5e11812a0062556b8e444fde13d92a296132/docs/img/fig4.png" 
@@ -72,7 +70,7 @@ A detailed solid of the polycarbonate enclosure can be found in the [hardware](h
    alt="Figure 4"/>
 </p>
 
-<p><center><b>Figure 4.</b> "Collapsed" exploded view of monitoring system</center></p>
+<p align="center"><b>Figure 4.</b> "Collapsed" exploded view of monitoring system</p>
 
 ## Electronic Components Selection
 
@@ -110,7 +108,7 @@ The solar panel is mounted to the top part of the housing, with the perforations
    alt="Figure 5"/>
 </p>
 
-<p><center><b>Figure 5.</b> The PCB and associated part of the enclosure, with sensor holes highlighted.</center></p>
+<p align="center"><b>Figure 5.</b> The PCB and associated part of the enclosure, with sensor holes highlighted.</p>
 
 <p align="center">
    <img src="https://github.com/jlunaing/Afridev-Hand-Pump-Sensor/blob/937f5e11812a0062556b8e444fde13d92a296132/docs/img/fig6.png" 
@@ -118,7 +116,7 @@ The solar panel is mounted to the top part of the housing, with the perforations
    alt="Figure 6"/>
 </p>
 
-<p><center><b>Figure 6.</b> The solar panel and its associated perforations.</center></p>
+<p align="center"><b>Figure 6.</b> The solar panel and its associated perforations.</p>
 
 To assemble the system onto the hand pump, we first drill six holes through the top cover of the hand pump according to the [drawings](hardware/v2/Drawings). These holes match the position of the heat-set inserts on the top part of the enclosure.
 
@@ -132,11 +130,11 @@ The software required to create a functioning system needs to be able to perform
 
 <p align="center">
    <img src="https://github.com/jlunaing/Afridev-Hand-Pump-Sensor/blob/937f5e11812a0062556b8e444fde13d92a296132/docs/img/fig7.png" 
-   width=60%    
+   width=70%    
    alt="Figure 7"/>
 </p>
 
-<p><center><b>Figure 7.</b> Finite state machine driving the microcontroller unit.</center></p>
+<p align="center"><b>Figure 7.</b> Finite state machine driving the microcontroller unit.</p>
 
 For data collection, the temperature (IR) and distance (ToF) sensor work in tandem to detect if the pump is working. To begin data collection, the ToF sensor is first used to detect if the handle is being pumped. This communicates with the MCU using the I2C protocol and provides accurate measurements. When the sensor reads that the pump is pulled up, the sensor triggers an interrupt (INTR in diagram) in the MCU to come out of [standby mode](https://www.st.com/resource/en/user_manual/um2923-a-guide-to-using-the-vl53l4cx-timeofflight-sensor-with-extended-distance-measurement-stmicroelectronics.pdf). The MCU then turns on the IR sensor, which takes measurements on the ambient and object temperature. The target of interest for the IR sensor is the bottom of the tank where water starts collecting, and the measured data is the temperature difference caused by the presence of water within the tank of the hand pump, relative to the temperature of the tank when no water is present, as described earlier. The MCU makes use of a timer, that is set when the interrupt is triggered, to minimize the data collection when the pump is not being used. 
 
@@ -149,11 +147,11 @@ For data transmission, the MCU uses satellite to send the data internationally. 
 In regard to the PCB, most components were pre-populated on the board from the PCB manufacturer's assembly service. This is convenient as it saves time and money&mdash;the components they have open for selection are often orders of magnitude cheaper than what can be found on popular supplier sites. Components that could not be found in their available library for assembly were ordered from Mouser and Digikey then soldered by hand. The demonstration enclosure was printed on a group member’s 3D printer out of PETG. 
 
 <p align="middle">
-  <img src="https://github.com/jlunaing/Afridev-Hand-Pump-Sensor/blob/937f5e11812a0062556b8e444fde13d92a296132/docs/img/fig9.jpg" width="100" />
-  <img src="https://github.com/jlunaing/Afridev-Hand-Pump-Sensor/blob/937f5e11812a0062556b8e444fde13d92a296132/docs/img/fig9b.jpg" width="100" /> 
+  <img src="https://github.com/jlunaing/Afridev-Hand-Pump-Sensor/blob/937f5e11812a0062556b8e444fde13d92a296132/docs/img/fig9.jpg" width=50% />
+  <img src="https://github.com/jlunaing/Afridev-Hand-Pump-Sensor/blob/937f5e11812a0062556b8e444fde13d92a296132/docs/img/fig9b.jpg" width=50% /> 
 </p>
 
-<p><center><b>Figure 9.</b> (a) Model Afridev hand pump on stand. (b) Open sensor prototype on pump.</center></p>
+<p align="center"><b>Figure 9.</b> (a) Model Afridev hand pump on stand. (b) Open sensor prototype on pump.</p>
 
 ## Further Development
 
