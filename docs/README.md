@@ -13,7 +13,7 @@
 
 For the initial decision and selection process, means of achieving each required function of the system were defined using a morphological chart (**Table 1**). This involved brainstorming ideas based on background research about technologies and known solutions.
 
-<p align="center"><b>Table 1.</b> Morphological chart for design development.<br><br>
+<div align="center"><b>Table 1.</b> Morphological chart for design development.<br><br>
 
 | Functions | Means |
 |  :----:   | ----- |
@@ -24,7 +24,7 @@ For the initial decision and selection process, means of achieving each required
 | Conserve battery life | - Solar panel<br> - Capacitor array |
 | Protect from external environment | - Epoxy resin enclosure<br>- Sensor box inserted inside pump<br>- Polycarbonate housing |
 
-</p>
+</div>
 
 The functions and means were gathered in [decision matrices](decision_matrices.md) to compare methods based on different criteria. From these matrices, we selected the optimal method for achieving each function and brainstormed ways to combine these components. The different key components of our design include the power management, processing, system enclosure, pump functionality sensing, and wireless communication.
 
@@ -62,7 +62,7 @@ A detailed solid of the polycarbonate enclosure can be found in the [hardware](h
    alt="Figure 3"/>
 </p>
 
-<p align="center"><b>Figure 3.</b> Exploded view of monitoring system. Colors shown for visual purposes.</p>
+<p align="center"><b>Figure 3.</b> Exploded view of monitoring system. Colors shown for visual purposes.</p><br>
 
 <p align="center">
    <img src="https://github.com/jlunaing/Afridev-Hand-Pump-Sensor/blob/937f5e11812a0062556b8e444fde13d92a296132/docs/img/fig4.png" 
