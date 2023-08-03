@@ -151,7 +151,7 @@ In regard to the PCB, most components were pre-populated on the board from the P
   <img src="https://github.com/jlunaing/Afridev-Hand-Pump-Sensor/blob/937f5e11812a0062556b8e444fde13d92a296132/docs/img/fig9b.jpg" width=40% /> 
 </p>
 
-<p align="center"><b>Figure 9.</b> (a) Model Afridev hand pump on stand. (b) Open sensor prototype on pump.</p>
+<p align="center"><b>Figure 9.</b> Model Afridev hand pump on stand (left) and open sensor prototype on pump (right).</p>
 
 ## Further Development
 
