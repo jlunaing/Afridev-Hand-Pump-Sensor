@@ -4,6 +4,23 @@
 
 [Source code](src), [circuit schematic and board files](pcb), and [technical report](docs) of a proof-of-concept electronic system to monitor the status of the Afridev model of hand pumps.
 
+<p align="middle">
+   <img src="https://github.com/jlunaing/Afridev-Hand-Pump-Sensor/blob/937f5e11812a0062556b8e444fde13d92a296132/img/prototype_02.HEIC" 
+   width=60%    
+   alt="Figure 1"/>
+</p>
+
+<p align="middle">
+   <img src="https://github.com/jlunaing/Afridev-Hand-Pump-Sensor/blob/937f5e11812a0062556b8e444fde13d92a296132/img/v2/assembly_01.png" 
+   width=60%    
+   alt="Figure 2"/>
+</p>
+
+<p align="middle">
+  <img src="https://github.com/jlunaing/Afridev-Hand-Pump-Sensor/blob/937f5e11812a0062556b8e444fde13d92a296132/img/afridev_sensor_01.png" width="100" alt="Figure 3A"/>
+  <img src="https://github.com/jlunaing/Afridev-Hand-Pump-Sensor/blob/937f5e11812a0062556b8e444fde13d92a296132/img/afridev_sensor_02.png" width="100" alt="Figure 3B"/> 
+</p>
+
 ## Introduction
 
 Different companies, non-profit organizations, and NGOs have implemented water projects in several regions of Africa. One of the most common projects are hand pumps for water wells. A challenge that is presented once these projects are concluded and used by the local residents are that there is no regular maintenance of these hand pumps due to communication difficulties with the local communities. For instance, in most of the Democratic Republic of the Congo (DRC), the lack of cellular signal and internet connection makes it more difficult for repair teams to know when the hand pumps need repair or maintenance. 
@@ -14,7 +31,7 @@ The reduction in hand pump repair time would increase the consistency of well wa
 
 ## Technical Background
 
-Currently, there are no commercially available options for well pump sensors with the capabilities to detect pump function, monitor water flow rate, and transmit data internationally. However, open-source systems of a similar nature have been developed by other organizations. A notable one is [Charity: Water](https://www.charitywater.org/), a non-profit serving several developing countries through community water projects and sanitation efforts. Their [sensors](https://www.charitywater.org/our-work/sensors )&mdash;which can be retrofitted onto the Afridev, Tapstand, and India Mark II hand pump models&mdash;are able to collect data on the quantity of water being pumped from a well. The gathered data is transmitted to the cloud weekly via cellular networks, where it is stored, processed, and made viewable by an application running on Amazon Web Services (AWS). The Afridev model appears to have been developed from 2016 to 2020 by Intelligent Product Solutions (IPS), while the India Mark II sensor was developed in 2021 by TwistThink over the course of at least a year.
+Currently, there are no commercially available options for well pump sensors with the capabilities to detect pump function, monitor water flow rate, and transmit data internationally. However, open-source systems of a similar nature have been developed by other organizations. A notable one is [Charity: Water](https://www.charitywater.org/), a non-profit serving several developing countries through community water projects and sanitation efforts. Their [sensors](https://www.charitywater.org/our-work/sensors)&mdash;which can be retrofitted onto the Afridev, Tapstand, and India Mark II hand pump models&mdash;are able to collect data on the quantity of water being pumped from a well. The gathered data is transmitted to the cloud weekly via cellular networks, where it is stored, processed, and made viewable by an application running on Amazon Web Services (AWS). The Afridev model appears to have been developed from 2016 to 2020 by Intelligent Product Solutions (IPS), while the India Mark II sensor was developed in 2021 by TwistThink over the course of at least a year.
 
 Extensive documentation for the Afridev and India Mark II models of the sensor is available on [GitHub](https://github.com/charitywater/india-mark-ii-sensor). Charity: Water's third generation Afridev hand-pump sensor expands on its predecessors with the ability to gather GPS, temperature, and device performance information. A more recent model, the India Mark II sensor, adds to these capabilities with additional stroke and humidity sensors. It costs $250 to build and maintain for its battery-limited 10-year lifespan and can collect ten million data points over a 24-hour period. This data is continually analyzed through Charity: Water's AWS backend, where personalized emails are dispatched to monitoring teams daily.
 

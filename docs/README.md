@@ -13,7 +13,9 @@
 
 For the initial decision and selection process, means of achieving each required function of the system were defined using a morphological chart (**Table 1**). This involved brainstorming ideas based on background research about technologies and known solutions.
 
-<p><center><b>Table 1.</b> Morphological chart for design development</center></p>
+<p align="center"><b>Table 1.</b> Morphological chart for design development</p>
+
+<center>
 
 | Functions | <center>Means</center> |
 |  :----:   | ----- |
@@ -23,6 +25,8 @@ For the initial decision and selection process, means of achieving each required
 | Transmit data | - Satellite<br>- Cellular |
 | Conserve battery life | - Solar panel<br> - Capacitor array |
 | Protect from external environment | - Epoxy resin enclosure<br>- Sensor box inserted inside pump<br>- Polycarbonate housing |
+
+</center>
 
 The functions and means were gathered in [decision matrices](decision_matrices.md) to compare methods based on different criteria. From these matrices, we selected the optimal method for achieving each function and brainstormed ways to combine these components. The different key components of our design include the power management, processing, system enclosure, pump functionality sensing, and wireless communication.
 
@@ -37,17 +41,17 @@ To transmit data wirelessly, we determined satellite to be a feasible option in 
 **Figure 1-2** illustrates the final iteration of the system design. It features a printed-circuit board inside a polycarbonate housing. The system was designed with subtlety in mind, so it features a low-profile exterior that protects the electronics inside. The unit is securely fastened to the top panel of the Afridev hand pump with fasteners that are hidden from external view. At the bottom surface, the enclosure has dimensions of $90 \times 115$ mm and is attached to the top cover of the hand pump, directly over the axis of motion of the plunger, allowing downward clearance for both the time-of-flight and the infrared sensors.
 
 <p align="center">
-   <img src="" 
+   <img src="https://github.com/jlunaing/Afridev-Hand-Pump-Sensor/blob/937f5e11812a0062556b8e444fde13d92a296132/docs/img/fig1.png" 
    width=60%    
-   alt=""/>
+   alt="Figure 1"/>
 </p>
 
 <p><center><b>Figure 1.</b> Monitoring system installed on top of the Afridev hand pump.</center></p>
 
 <p align="center">
-   <img src="" 
+   <img src="https://github.com/jlunaing/Afridev-Hand-Pump-Sensor/blob/937f5e11812a0062556b8e444fde13d92a296132/docs/img/fig2.png" 
    width=60%    
-   alt=""/>
+   alt="Figure 2"/>
 </p>
 
 <p><center><b>Figure 2.</b> Close-up view of monitoring system.</center></p>
@@ -55,17 +59,17 @@ To transmit data wirelessly, we determined satellite to be a feasible option in 
 A detailed solid of the polycarbonate enclosure can be found in the [hardware](hardware) folder, where version [v2](hardware/v2) corresponds to the latest design. The mechanical design of the housing features walls at $60\degree$ angles to dissuade removal of the sensor. The electrical system consists of batteries, a solar cell, charge controller, two sensors, a satellite modem, and a microcontroller. These components, as described in the following sections, are integrated into a PCB which is situated between the bottom and top housing. An exploded and collapsed view of the housing and the PCB is shown below (**Figure 3-4**). Detailed engineering drawings and the detailed electrical circuit schematic can be found in the [Drawings](hardware/v2/Drawings) and [PCB](pcb) folders. The software system that the design will use to process the data is described in the software development plan in the [Product Realization](#product-realization) section.
 
 <p align="center">
-   <img src="" 
+   <img src="https://github.com/jlunaing/Afridev-Hand-Pump-Sensor/blob/937f5e11812a0062556b8e444fde13d92a296132/docs/img/fig3.png" 
    width=60%    
-   alt=""/>
+   alt="Figure 3"/>
 </p>
 
 <p><center><b>Figure 3.</b> Exploded view of monitoring system. Colors shown for visual purposes.</center></p>
 
 <p align="center">
-   <img src="" 
+   <img src="https://github.com/jlunaing/Afridev-Hand-Pump-Sensor/blob/937f5e11812a0062556b8e444fde13d92a296132/docs/img/fig4.png" 
    width=60%    
-   alt=""/>
+   alt="Figure 4"/>
 </p>
 
 <p><center><b>Figure 4.</b> "Collapsed" exploded view of monitoring system</center></p>
@@ -101,17 +105,17 @@ The PCB is mounted onto the bottom part of the housing, where an electrical pott
 The solar panel is mounted to the top part of the housing, with the perforations beneath it designed to allow epoxy to hold it in place effectively (**Figure 6**). This part of the housing has six holes in which metal heat-set inserts can be placed for later attachment to the pump.
 
 <p align="center">
-   <img src="" 
+   <img src="https://github.com/jlunaing/Afridev-Hand-Pump-Sensor/blob/937f5e11812a0062556b8e444fde13d92a296132/docs/img/fig5.png" 
    width=60%    
-   alt=""/>
+   alt="Figure 5"/>
 </p>
 
 <p><center><b>Figure 5.</b> The PCB and associated part of the enclosure, with sensor holes highlighted.</center></p>
 
 <p align="center">
-   <img src="" 
+   <img src="https://github.com/jlunaing/Afridev-Hand-Pump-Sensor/blob/937f5e11812a0062556b8e444fde13d92a296132/docs/img/fig6.png" 
    width=60%    
-   alt=""/>
+   alt="Figure 6"/>
 </p>
 
 <p><center><b>Figure 6.</b> The solar panel and its associated perforations.</center></p>
@@ -127,9 +131,9 @@ Combined with slightly undersized holes, these heat-set inserts produce a lockin
 The software required to create a functioning system needs to be able to perform data collection, translation, and transmission, as well as transitioning a system between idle and active mode. The software is programmed and processed on a microcontroller unit (MCU) that acts as the central controller for the entire system. The finite state diagram for the software is shown in **Figure 7**.
 
 <p align="center">
-   <img src="" 
+   <img src="https://github.com/jlunaing/Afridev-Hand-Pump-Sensor/blob/937f5e11812a0062556b8e444fde13d92a296132/docs/img/fig7.png" 
    width=60%    
-   alt=""/>
+   alt="Figure 7"/>
 </p>
 
 <p><center><b>Figure 7.</b> Finite state machine driving the microcontroller unit.</center></p>
@@ -144,10 +148,9 @@ For data transmission, the MCU uses satellite to send the data internationally. 
 
 In regard to the PCB, most components were pre-populated on the board from the PCB manufacturer's assembly service. This is convenient as it saves time and money&mdash;the components they have open for selection are often orders of magnitude cheaper than what can be found on popular supplier sites. Components that could not be found in their available library for assembly were ordered from Mouser and Digikey then soldered by hand. The demonstration enclosure was printed on a group member’s 3D printer out of PETG. 
 
-<p align="center">
-   <img src="" 
-   width=60%    
-   alt=""/>
+<p align="middle">
+  <img src="https://github.com/jlunaing/Afridev-Hand-Pump-Sensor/blob/937f5e11812a0062556b8e444fde13d92a296132/docs/img/fig9.jpg" width="100" />
+  <img src="https://github.com/jlunaing/Afridev-Hand-Pump-Sensor/blob/937f5e11812a0062556b8e444fde13d92a296132/docs/img/fig9b.jpg" width="100" /> 
 </p>
 
 <p><center><b>Figure 9.</b> (a) Model Afridev hand pump on stand. (b) Open sensor prototype on pump.</center></p>
