@@ -18,11 +18,11 @@ For the initial decision and selection process, means of achieving each required
 | Functions | Means |
 |  :----:   | ----- |
 | Measure flow rate out of the hand pump | <p align="left">- Monitor internal capacitance<br>- Flow meter/sensor<br>- Water wheel </p>|
-| Convert mechanical energy to electrical energy | - Inductor array<br> - Magnets and coil |
-| Translate electrical energy | - Convert analog to digital<br>- Memory to transmit package<br> - Convert to correct units |
-| Transmit data | - Satellite<br>- Cellular |
-| Conserve battery life | - Solar panel<br> - Capacitor array |
-| Protect from external environment | - Epoxy resin enclosure<br>- Sensor box inserted inside pump<br>- Polycarbonate housing |
+| Convert mechanical energy to electrical energy | <p align="left">- Inductor array<br> - Magnets and coil </p>|
+| Translate electrical energy | <p align="left">- Convert analog to digital<br>- Memory to transmit package<br> - Convert to correct units </p>|
+| Transmit data | <p align="left">- Satellite<br>- Cellular </p>|
+| Conserve battery life | <p align="left">- Solar panel<br> - Capacitor array </p>|
+| Protect from external environment | <p align="left">- Epoxy resin enclosure<br>- Sensor box inserted inside pump<br>- Polycarbonate housing </p>|
 
 </div>
 
