@@ -5,20 +5,20 @@
 [Source code](src), [circuit schematic and board files](pcb), and [**technical report**](docs) of a proof-of-concept electronic system to monitor the status of the Afridev model of hand pumps.
 
 <p align="middle">
-   <img src="https://github.com/jlunaing/Afridev-Hand-Pump-Sensor/blob/937f5e11812a0062556b8e444fde13d92a296132/img/prototype_02.png" 
+   <img src="https://github.com/jlunaing/Afridev-Hand-Pump-Sensor/blob/7f0130a3bdbf5bf57193291cfedf667f1ba475b3/img/prototype_02.png" 
    width=60%    
    alt="Figure 1"/>
 </p>
 
 <p align="middle">
    <img src="https://github.com/jlunaing/Afridev-Hand-Pump-Sensor/blob/937f5e11812a0062556b8e444fde13d92a296132/img/v2/assembly_01.png" 
-   width=60%    
+   width=50%    
    alt="Figure 2"/>
 </p>
 
 <p align="middle">
-  <img src="https://github.com/jlunaing/Afridev-Hand-Pump-Sensor/blob/937f5e11812a0062556b8e444fde13d92a296132/img/afridev_sensor_01.png" width="100" alt="Figure 3A"/>
-  <img src="https://github.com/jlunaing/Afridev-Hand-Pump-Sensor/blob/937f5e11812a0062556b8e444fde13d92a296132/img/afridev_sensor_02.png" width="100" alt="Figure 3B"/> 
+  <img src="https://github.com/jlunaing/Afridev-Hand-Pump-Sensor/blob/937f5e11812a0062556b8e444fde13d92a296132/img/afridev_sensor_01.png" width=40% alt="Figure 3A"/>
+  <img src="https://github.com/jlunaing/Afridev-Hand-Pump-Sensor/blob/937f5e11812a0062556b8e444fde13d92a296132/img/afridev_sensor_02.png" width=40% alt="Figure 3B"/> 
 </p>
 
 ## Introduction
