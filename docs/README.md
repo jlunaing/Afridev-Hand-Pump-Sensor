@@ -13,17 +13,18 @@
 
 For the initial decision and selection process, means of achieving each required function of the system were defined using a morphological chart (**Table 1**). This involved brainstorming ideas based on background research about technologies and known solutions.
 
-<div align="center"><b>Table 1.</b> Morphological chart for design development.</div><br>
+<div align="center"><b>Table 1.</b> Morphological chart for design development.<br><br>
 
 | Functions | Means |
 |  :----:   | ----- |
-| Measure flow rate out of the hand pump | - Monitor internal capacitance<br>- Flow meter/sensor<br>- Water wheel |
+| Measure flow rate out of the hand pump | <p align="left">- Monitor internal capacitance<br>- Flow meter/sensor<br>- Water wheel </p>|
 | Convert mechanical energy to electrical energy | - Inductor array<br> - Magnets and coil |
 | Translate electrical energy | - Convert analog to digital<br>- Memory to transmit package<br> - Convert to correct units |
 | Transmit data | - Satellite<br>- Cellular |
 | Conserve battery life | - Solar panel<br> - Capacitor array |
 | Protect from external environment | - Epoxy resin enclosure<br>- Sensor box inserted inside pump<br>- Polycarbonate housing |
 
+</div>
 
 The functions and means were gathered in [decision matrices](decision_matrices.md) to compare methods based on different criteria. From these matrices, we selected the optimal method for achieving each function and brainstormed ways to combine these components. The different key components of our design include the power management, processing, system enclosure, pump functionality sensing, and wireless communication.
 
